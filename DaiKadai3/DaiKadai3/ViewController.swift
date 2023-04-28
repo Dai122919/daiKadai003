@@ -18,24 +18,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
 
     @IBAction func button1(_ sender: Any) {
-        let num1 : Int = Int(number1TextField.text!) ?? 0
+        let num1: Int = Int(number1TextField.text!) ?? 0
 
-        if number1Switch.isOn == false {
-            calculate1Label.text = String(+num1)
-        }else{
-            calculate1Label.text = String(-num1)
+        let signedNumber1: Int
+
+        if number1Switch.isOn {
+            signedNumber1 = -num1
+        } else {
+            signedNumber1 = num1
         }
 
-        let num2 : Int = Int(number2TextField.text!) ?? 0
+        let num2: Int = Int(number2TextField.text!) ?? 0
         
-        if number2Switch.isOn == false {
-            calculate2Label.text = String(+num2)
-        }else{
-            calculate2Label.text = String(-num2)
+        let signedNumber2: Int
+
+        if number2Switch.isOn {
+            signedNumber2 = -num2
+        } else {
+            signedNumber2 = num2
         }
-        
-        let number1 :  Int = Int(calculate1Label.text!) ?? 0
-        let number2 :  Int = Int(calculate2Label.text!) ?? 0
-        resultLabel.text = String(number1 + number2)
+
+        calculate1Label.text = String(signedNumber1)
+        calculate2Label.text = String(signedNumber2)
+        resultLabel.text = String(signedNumber1 + signedNumber2)
     }
 }
